@@ -1,0 +1,47 @@
+{% extends "blog/base.html" %}
+
+{% block title %}Liste des articles {% endblock %}
+
+{% block content %}
+
+<h2>Liste des articles</h2>
+
+<table>
+    <thead>
+        <th>Titre</th>
+        <th>Auteur</th>
+        <th>Contenu</th>
+        <th>Date de création</th>
+        <th>Voir détail</th>
+    </thead>
+    <tbody>
+        {%for objet in page_obj %}
+        <tr>
+            <td>{{objet.titre}}</td>
+            <td>{{objet.auteur}}</td>
+            <td>{{objet.contenu}}</td>
+            <td>{{objet.date|date:"d/m/Y à H:i"}}</td>
+            <td><a href="{% url 'blog:detail_article' objet.slug %}">Voir détail</a></td>
+        </tr>
+        {%endfor%}
+    </tbody>
+</table>
+
+<!-- Pagination -->
+<div class="pagination" style="margin-top: 2rem">
+   
+    {% if page_obj.has_previous %}
+        <a href="?page=1">&laquo; Première</a>
+        <a href="?page={{ page_obj.previous_page_number }}">Précédente</a>
+    {% endif %}
+    <span>
+        Page {{ page_obj.number }} sur {{ page_obj.paginator.num_pages }}
+    </span>
+    {% if page_obj.has_next %}
+        <a href="?page={{ page_obj.next_page_number }}">Suivante</a>
+        <a href="?page={{ page_obj.paginator.num_pages }}">Dernière &raquo;</a>
+    {% endif %}
+    
+</div>
+
+{% endblock %}

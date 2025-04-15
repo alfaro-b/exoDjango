@@ -1,0 +1,16 @@
+{% extends "blog/base.html" %}
+
+{% block title %}Détail d'un article {% endblock %}
+
+{% block content %}
+<h2>Détail de l'article</h2>
+
+<h3>{{article.titre}}</h3>
+<h4>Auteur : {{article.auteur}}</h4>
+<p>
+    <div class="contenu">{{article.contenu}}</div>
+    <div>Article créé le : {{article.date}}</div>
+</p>
+
+
+{% endblock %}

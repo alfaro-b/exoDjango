@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %} {% endblock %}</title>
+    <style>
+        nav ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            display: flex;
+            background-color: #f0f0f0;
+            border-bottom: 1px solid #ccc;
+        }
+        nav ul li {
+            padding: 1rem;
+        }
+        footer {
+            background-color: #f0f0f0;
+            margin-top: 1rem;
+        }
+    </style>
+</head>
+
+    <body>
+        <nav>
+            <ul>
+                <li><a href="{% url 'salutation:bonjour'%}">Lien vers page bonjour</a></li>
+                <li><a href="{% url 'salutation:au_revoir'%}">Lien vers page au revoir</a></li>
+                <li><a href="{% url 'salutation:ajouter'%}">Lien vers page ajouter article</a></li>
+                <li><a href="{% url 'salutation:dashboard'%}">Tableau de bord</a></li>
+                <li><a href="{% url 'salutation:home'%}">Retour à l'accueil</a></li>
+                <!-- pour déconnxeion pas possible d'utiliser balise a car par défaut methode get -->
+                <li>
+                    <form method="post" action="{% url 'logout'%}"> 
+                        {%csrf_token%}
+                        <button type="submit">Déconnexion</button>
+                    </form>
+                </li>
+            </ul>
+        </nav>    
+       <h1> Mon 1er site Django</h1> 
+
+        {% block content %}{% endblock %}
+
+        <footer>Pied de page</footer>
+    </body>
+</html

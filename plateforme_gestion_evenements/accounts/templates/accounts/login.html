@@ -1,0 +1,17 @@
+{% if user.is_authenticated %}
+    Vous êtes connecté en tant que <strong> {{ user.username }}!</strong>
+    <form method="post" action="{% url 'logout' %}">
+      {% csrf_token %}
+      <button type="submit">Se déconnecter</button>
+  </form>
+
+{% else %}
+<h2>Connexion</h2>
+
+<form method="post">
+  {% csrf_token %}
+  {{ form.as_p }}
+  <button type="submit">Se connecter</button>
+</form>
+<p><a href="{% url 'accounts:signup' %}">Créer un compte</a></p>
+{% endif %}

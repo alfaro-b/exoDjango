@@ -1,0 +1,15 @@
+{% extends 'events/base.html' %}
+
+{% block titre %}Modifier l'évènemnt {{ event.titre }}{% endblock %}
+
+{% block content %}
+<h2>Modifier l'évènement {{ event.titre }}</h2>
+
+<form method="post">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit">Enregistrer les modifications</button>
+</form>
+
+<a href="{% url 'events:liste_events' %}">Retour à la liste</a>
+{% endblock %}

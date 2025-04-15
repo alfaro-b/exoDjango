@@ -1,0 +1,15 @@
+{% extends 'comments/base.html' %}
+
+{% block titre %}Supprimer le commentaire {% endblock %}
+
+{% block content %}
+<h2>Supprimer le commentaire</h2>
+
+<form method="post">
+    {% csrf_token %}
+    <p>Attention, en cliquant sur le bouton, vous supprimerez définitivement le commentaire.</p>
+    <button type="submit">Supprimer le commentaire</button>
+</form>
+
+<a href="{% url 'events:liste_events' %}">Retour à la liste</a>
+{% endblock %}

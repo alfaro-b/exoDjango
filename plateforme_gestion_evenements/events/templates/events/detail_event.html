@@ -1,0 +1,17 @@
+{% extends 'events/base.html' %}
+
+{% block titre %}{{ event.titre }}{% endblock %}
+
+{% block content %}
+<h2>{{ event.titre }}</h2>
+<p>{{ event.description }}</p>
+<p>Date : {{ event.date }}</p>
+<p>Lieu : {{ event.lieu }}</p>
+<p>Capacité d'accueil : {{ event.capacite }}</p>
+
+<a href="{% url 'events:modifier_event' event.slug%}">Modifier l'évènement</a>
+
+<a href="{% url 'events:supprimer_event' event.slug%}">Supprimer l'évènement</a>
+
+<a href="{% url 'events:liste_events' %}">Retour à la liste</a>
+{% endblock %}

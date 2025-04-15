@@ -1,0 +1,15 @@
+{% extends 'events/base.html' %}
+
+{% block titre %}Supprimer l'évènemnt {{ event.titre }}{% endblock %}
+
+{% block content %}
+<h2>Supprimer l'évènement {{ event.titre }}</h2>
+
+<form method="post">
+    {% csrf_token %}
+    <p>Attention, en cliquant sur le bouton, vous supprimerez définitivement l'événement <strong>{{ event.titre }}</strong></p>
+    <button type="submit">Supprimer l'événement</button>
+</form>
+
+<a href="{% url 'events:liste_events' %}">Retour à la liste</a>
+{% endblock %}

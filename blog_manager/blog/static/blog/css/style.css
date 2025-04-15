@@ -1,0 +1,25 @@
+nav ul {
+    list-style: none;
+    padding: 0;
+    display: flex;
+    background-color: #f0f0f0;
+}
+nav ul li {
+    padding: 1rem;
+}
+
+thead {
+    background-color: rgb(223, 220, 220)
+}
+table{
+    border-collapse: collapse;
+}
+th, tr, td {
+    padding: 1rem;
+    border: 1px solid grey;
+}
+.contenu {
+    border: 1px solid grey;
+    padding: 1rem 0rem;
+    margin: 1rem 0rem;
+}

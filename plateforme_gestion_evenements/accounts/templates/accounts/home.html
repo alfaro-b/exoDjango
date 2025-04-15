@@ -1,0 +1,24 @@
+{% extends "accounts/base.html" %}
+
+{% block title %}Page d'accueil {% endblock %}
+
+{% block content %}
+
+<h2> Bienvenue sur la plateforme!</h1>
+
+{% if user.is_authenticated %}
+  Bonjour, {{ user.username }}!
+
+  <p><a href="{% url 'events:liste_events' %}">Voir la liste des évènements</a></p>
+  
+<form method="post" action="{% url 'logout' %}">
+    {% csrf_token %}
+    <button type="submit">Se déconnecter</button>
+</form>
+
+{% else %}
+  <p>Vous n'ếtes pas connecté.</p>
+  <a href="{% url 'login' %}">Se connecter</a>
+{% endif %}
+
+{% endblock %}

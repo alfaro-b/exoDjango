@@ -1,0 +1,31 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %} {% endblock %}</title>
+    <link rel="stylesheet" href="{% static 'blog/css/style.css' %}">
+</head>
+
+    <body>
+        <nav>
+            <ul>
+                <li><a href="{% url 'blog:liste_articles'%}">Liste des articles</a></li>
+                <li><a href="{% url 'blog:ajouter'%}">Ajouter un article</a></li>
+            </ul>
+        </nav>    
+       <h1> Mon 1er BLOG</h1> 
+
+       {% if messages %}
+        <ul class="messages">
+            {% for message in messages %}
+            <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
+            {% endfor %}
+        </ul>
+        {% endif %}
+
+        {% block content %}{% endblock %}
+
+    </body>
+</html
