@@ -9,23 +9,19 @@
 <table>
     <thead>
         <th>Titre</th>
-        <th>Description</th>
         <th>Date</th>
         <th>Lieu</th>
         <th>Capacité</th>
         <th>Voir détail</th>
-        <th>Commentaires</th>
     </thead>
     <tbody>
         {% for event in object_list %}
         <tr>
             <td>{{event.titre}}</td>
-            <td>{{event.description}}</td>
             <td>{{event.date}}</td>
             <td>{{event.lieu}}</td>
             <td>{{event.capacite}}</td>
             <td><a href="{% url 'events:detail_event' event.slug %}">Voir détail</a></td>
-            <td><a href="{% url 'comments:ajouter_comment' event.titre %}">Ajouter un commentaire</a></td>
         </tr>
         {% empty %}
         <h4>Aucun article pour le moment.</h4>

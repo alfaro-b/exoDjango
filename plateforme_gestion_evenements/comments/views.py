@@ -1,7 +1,8 @@
-from django.shortcuts import render
+from django.shortcuts import render, get_object_or_404
 from django.urls import reverse_lazy
 from django.views.generic import CreateView, DeleteView
-from .models import Comment, Event
+from .models import Comment
+from events.models import Event
 from .forms import CommentForm
 from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
 
@@ -14,8 +15,9 @@ class CommentCreateView(LoginRequiredMixin, CreateView):
     success_url = reverse_lazy('events:liste_events')
 
     def form_valid(self, form):
+        event = get_object_or_404(Event, pk=self.kwargs['event_pk'])
         form.instance.auteur = self.request.user
-        form.instance.evenement = Event.titre
+        form.instance.evenement = event
         response = super().form_valid(form)
         return response
     

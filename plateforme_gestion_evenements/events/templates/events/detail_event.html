@@ -5,13 +5,25 @@
 {% block content %}
 <h2>{{ event.titre }}</h2>
 <p>{{ event.description }}</p>
-<p>Date : {{ event.date }}</p>
-<p>Lieu : {{ event.lieu }}</p>
-<p>Capacité d'accueil : {{ event.capacite }}</p>
-
-<a href="{% url 'events:modifier_event' event.slug%}">Modifier l'évènement</a>
-
-<a href="{% url 'events:supprimer_event' event.slug%}">Supprimer l'évènement</a>
-
+<p>Date : {{ event.date }} / Lieu : {{ event.lieu }} / Capacité d'accueil : {{ event.capacite }}</p>
+<p>
+    <h4>Commentaires : </h4>
+    <ul>
+        {% for comment in event.comment_set.all%}
+            <li>
+            {{comment.contenu}}</br>
+            Auteur : {{comment.auteur}} / Posté le : {{comment.date}}
+            </li>
+        {%endfor%}
+    </ul>
+</p>
+<div style ="margin:2rem 0rem ">
+    <a href="{% url 'comments:ajouter_comment' event.pk %}">Ajouter un commentaire</a>
+    <a href="{% url 'comments:supprimer_comment' event.pk %}">Supprimer un commentaire</a>
+</div>
+<div style ="margin:2rem 0rem ">
+    <a href="{% url 'events:modifier_event' event.slug%}">Modifier l'évènement</a>
+    <a href="{% url 'events:supprimer_event' event.slug%}">Supprimer l'évènement</a>
+</div>
 <a href="{% url 'events:liste_events' %}">Retour à la liste</a>
 {% endblock %}

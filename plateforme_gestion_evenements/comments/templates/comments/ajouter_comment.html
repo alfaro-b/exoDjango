@@ -3,7 +3,7 @@
 {% block titre %}Ajouter un commentaire{% endblock %}
 
 {% block content %}
-<h2>Ajouter un commentaire à l'évènement {{event.titre}}</h2>
+<h2>Ajouter un commentaire à l'évènement</h2>
 <form method="post">
     {% csrf_token %}
     {{ form.as_p }}

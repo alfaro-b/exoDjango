@@ -6,6 +6,6 @@ from .views import CommentCreateView, CommentDeleteView
 app_name='comments'
 
 urlpatterns = [
-    path('ajouter_comment/<str:titre>', CommentCreateView.as_view(), name='ajouter_comment'),
-    path('supprimer_comment/', CommentDeleteView.as_view(), name='supprimer_comment'),
+    path('<int:event_pk>/ajouter_comment', CommentCreateView.as_view(), name='ajouter_comment'),
+    path('<int:event_pk>/supprimer_comment', CommentDeleteView.as_view(), name='supprimer_comment'),
 ]
